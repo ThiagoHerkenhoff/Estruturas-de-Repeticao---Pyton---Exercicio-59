@@ -1,0 +1,46 @@
+# 59 - Escreva um programa que leia o número de habitantes de uma determinada cidade, o valor do kwh,
+# e para cada habitante entre com os seguintes dados: consumo do mês e o código do consumidor
+# (1 - Residencial, 2 - Comercial, 3 - Industrial). No final imprima o maior, o menor, e a média
+# do consumo dos habitantes, e por fim o total do consumo de cada categoria de consumidor.
+
+# Solicitar dados ao usuário
+habitantes = int(input("Digite o número de habitantes da cidade: "))
+valor_kwh = float(input("Digite o valor do kWh: "))
+
+# Inicializar variáveis para armazenar estatísticas
+menor_consumo = float('inf')
+maior_consumo = 0
+soma_consumo = 0
+total_residencial = total_comercial = total_industrial = 0
+
+# Loop para cada habitante
+for i in range(1, habitantes + 1):
+    consumo = float(input(f"Consumo do habitante {i}: "))
+    categoria = int(input(f"Código do consumidor do habitante {i} (1 - Residencial, 2 - Comercial, 3 - Industrial): "))
+
+    # Atualizar estatísticas
+    if consumo < menor_consumo:
+        menor_consumo = consumo
+    if consumo > maior_consumo:
+        maior_consumo = consumo
+    soma_consumo += consumo
+
+    # Atualizar total do consumo por categoria
+    if categoria == 1:
+        total_residencial += consumo
+    elif categoria == 2:
+        total_comercial += consumo
+    elif categoria == 3:
+        total_industrial += consumo
+
+# Calcular média do consumo
+media_consumo = soma_consumo / habitantes
+
+# Imprimir resultados
+print(f"Maior consumo: {maior_consumo}")
+print(f"Menor consumo: {menor_consumo}")
+print(f"Média de consumo: {media_consumo}")
+print("\nTotal do consumo por categoria:")
+print(f"Residencial: {total_residencial}")
+print(f"Comercial: {total_comercial}")
+print(f"Industrial: {total_industrial}")
